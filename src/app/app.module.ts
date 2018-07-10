@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -12,7 +12,12 @@ import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 import { CountryCodePipe } from './pipe/countrycode.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
+import {Dataservice} from './service/data.service';
+import {HttpModule} from '@angular/http'; 
+import {HttpClientModule} from '@angular/common/http'; 
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,13 +28,17 @@ import { LoginComponent } from './auth/login/login.component';
     PipeDemoComponent,
     CountryCodePipe,
     FilterPipe,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Dataservice,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

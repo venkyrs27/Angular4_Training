@@ -1,0 +1,37 @@
+{
+    "userdata": [
+        {
+    "firstName" : "Elon",
+    "lastName" : "musk",
+    "dob" : "Dec 21, 1963",
+    "income" : 50000,
+    "isWorking" : true,
+    "married" : false,
+    "company" : "Microsoft",
+    "votes" : 120,
+    "image" : "assets/images/elon.jfif"
+        },
+        {
+    "firstName" : "mark",
+    "lastName" : "zuckerberg",
+    "dob" : "Jan 2, 1963",
+    "income" : 0,
+    "isWorking" : false,
+    "married" : true,
+    "company" : "Apple",
+    "votes" : 180,
+    "image" : "assets/images/mark.jfif"
+        },
+        {
+    "firstName" : "jack",
+    "lastName" : "ma",
+    "dob" : "Feb 1, 1963",
+    "income" : 40000,
+    "isWorking" : true,
+    "married" : true,
+    "company" : "World Wide Web",
+    "votes" : 150,
+    "image" : "assets/images/jack.jfif"
+        }
+    ]
+}
