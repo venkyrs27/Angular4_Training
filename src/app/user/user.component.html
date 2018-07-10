@@ -1,0 +1,28 @@
+<ng-content select="h1"></ng-content>
+<h3 class="user">User component loaded!</h3>
+<h3 class="user">Parent Title :{{title}}</h3>
+<div
+  class="container">
+<ul class="list-unstyled">
+  <li class="well">
+    <div class="row">
+      <div class="col-xs-3 col-sm-3 col-md-3">
+        <img [src]="user.image" class="img-responsive img-circle">
+        <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
+           More Info
+        </button>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-8">
+        <h1>{{user.firstName}} {{user.lastName}}</h1>
+        <p>DOB: <span [innerHTML]="user.dob"></span></p>
+        <p>Married: {{user.married}}</p>
+        <p>Company: {{user.company}}</p>
+        <!-- <input type="text" [value]="user.company" (change)="user.company = $event.target.value"/> -->
+        <input [(ngModel)]="user.company" placeholder="name">
+      </div>
+  </div>
+  </li>
+</ul>
+</div>
+
+<ng-content select="footer"></ng-content>
