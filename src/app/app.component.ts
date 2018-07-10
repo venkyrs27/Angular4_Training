@@ -9,10 +9,10 @@ import { USER } from './model/user';
 })
 export class AppComponent implements OnInit{
   title = 'My Application';
-  user : USER;
+  users : USER[];
   
   ngOnInit(){
-    this.user = USER_DATA;
     console.log("ngOninit");
+    this.users = USER_DATA;
   }
 }

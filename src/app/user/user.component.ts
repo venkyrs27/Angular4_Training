@@ -11,9 +11,18 @@ import { USER } from '../model/user';
 export class UserComponent {
 
 @Input('title') title : string;  
-@Input('user') user : USER;
+@Input('users') users : USER[];
+
+myColor : string;
+
+myClasses = {
+  myBorder : true,
+  myText : false
+}
   
   moreInfo(user : USER){
+    this.myClasses.myBorder = !this.myClasses.myBorder;
+    this.myClasses.myText = !this.myClasses.myText;
     alert(user.firstName + " is the founder of "+  `${user.company}`);
   }
 

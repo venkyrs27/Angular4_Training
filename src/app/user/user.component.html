@@ -4,8 +4,9 @@
 <div
   class="container">
 <ul class="list-unstyled">
-  <li class="well">
+  <li class="well" *ngFor="let user of users; index as i; first as isFirst; even as isEven">
     <div class="row">
+      <!-- {{i}}{{isFirst}}{{isEven}} -->
       <div class="col-xs-3 col-sm-3 col-md-3">
         <img [src]="user.image" class="img-responsive img-circle">
         <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
@@ -13,14 +14,17 @@
         </button>
       </div>
       <div class="col-xs-8 col-sm-8 col-md-8">
-        <h1>{{user.firstName}} {{user.lastName}}</h1>
-        <p>DOB: <span [innerHTML]="user.dob"></span></p>
-        <p>Married: {{user.married}}</p>
-        <p>Company: {{user.company}}</p>
+        <h1 apphighlight [myColor]="'aqua'" [defaultColor]="'transparent'" >{{user.firstName | uppercase}} {{user.lastName | lowercase}}</h1>
+        <p [ngClass]="myClasses">DOB: <span [innerHTML]="user.dob | date"></span></p>
+        <p *appUnless = "user.married">Married: {{user.married}}</p>
+        <p *ngIf="!user.married; else ElseTemplate">Company: {{user.company}}</p>
         <!-- <input type="text" [value]="user.company" (change)="user.company = $event.target.value"/> -->
         <input [(ngModel)]="user.company" placeholder="name">
       </div>
   </div>
+  <ng-template #ElseTemplate>
+    <p>{{user.firstName}} is married!!</p>
+  </ng-template>
   </li>
 </ul>
 </div>

@@ -1,3 +1,11 @@
 .user{
     color: red;
 }
+
+.myBorder{
+    border : 2px greenyellow solid;
+}
+
+.myText{
+    text-decoration: underline;
+}
