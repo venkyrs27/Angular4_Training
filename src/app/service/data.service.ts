@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 
 import 'rxjs/add/operator/map';
 import { USER } from '../model/user';
+import { AuthService } from './auth.service';
 
 
 @Injectable()
@@ -20,9 +21,17 @@ getJsonData(){
 }
 
 getApiData(){
-    return this.httpClient.get<USER[]>("https://api-project-536794146430.firebaseio.com/userdata.json");
-}
+     // return this.httpClient
+    //     .get<User[]>("https://fir-soc-gen.firebaseio.com/userdata.json",{
+    //         params : new HttpParams().set("auth", this.authService.getToken())
+    //     });
+    // return this.httpClient
+     // .get<USER[]>("https://fir-soc-gen.firebaseio.com/userdata.json?auth="+this.authService.getToken() );
 
-constructor(private http : Http, private httpClient : HttpClient){}
+     return this.httpClient
+     .get<USER[]>("https://fir-soc-gen.firebaseio.com/userdata.json");
+ }
+
+constructor(private http : Http, private httpClient : HttpClient, private  authService : AuthService){}
 
 } 

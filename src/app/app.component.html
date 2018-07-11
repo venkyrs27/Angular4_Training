@@ -3,18 +3,47 @@
     <app-pipe-demo></app-pipe-demo>
 </div>
 <hr>
-<br>  -->
+<br>
 
-<!-- <div class="container">
+<div class="container">
     <app-login></app-login>
 </div>
 <hr>
-<br> -->
+<br>
 
 <div class="container">
     <app-register></app-register>
 </div>
-<hr>
+<hr> -->
+
+<div class="container">
+    <ul class="list-unstyled nav navbar-nav navbar-default">
+        <li *ngIf="this.authService.isAuthenticated()">
+            <a [routerLink]="['']">HOME</a>
+        </li>
+        <li>
+            <a [routerLink]="['register']">REGISTER</a>
+        </li>
+        <li>
+            <a [routerLink]="['pipe']">PIPE DEMO</a>
+        </li>
+        <li>
+            <a [routerLink]="['user']">USER DEMO</a>
+        </li>
+        <li>
+            <a [routerLink]="['product']">PRODUCT</a>
+        </li>
+        <li>
+            <a [routerLink]="['employee']">EMPLOYEE</a>
+        </li>
+        <li>
+            <a [routerLink]="['lazy']">LAZY</a>
+        </li>
+    </ul>
+</div>
+<hr> -
+
+<router-outlet></router-outlet>
 
 <div style="text-align:center">
   <app-user [title]="title" [users]="users">

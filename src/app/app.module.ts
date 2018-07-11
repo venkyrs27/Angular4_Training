@@ -16,8 +16,20 @@ import { RegisterComponent } from './auth/register/register.component';
 
 import {Dataservice} from './service/data.service';
 import {HttpModule} from '@angular/http'; 
-import {HttpClientModule} from '@angular/common/http'; 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import { AuthService } from './service/auth.service';
+
+import { AuthInterceptorService } from './service/auth-interceptor.service';
+import { LoggerInterceptorService } from './service/logger-interceptor.service';
+
+import {RouterModule} from '@angular/router';
+import { APP_ROUTES } from './app.routes';
+
+import { LoginGaurdService } from './service/login-guard.service';
+import { ProductComponent } from './product/product.component';
+import { SpecificationComponent } from './product/specification/specification.component';
+import { DescriptionComponent } from './product/description/description.component';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   declarations: [
@@ -29,16 +41,29 @@ import { AuthService } from './service/auth.service';
     CountryCodePipe,
     FilterPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent,
+    SpecificationComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES),
+    EmployeeModule
   ],
-  providers: [Dataservice,AuthService],
+  providers: [Dataservice, AuthService, LoginGaurdService, {
+    provide : HTTP_INTERCEPTORS,
+    useClass : AuthInterceptorService,
+    multi : true
+  },{
+    provide : HTTP_INTERCEPTORS,
+    useClass : LoggerInterceptorService,
+    multi : true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
